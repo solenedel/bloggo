@@ -13,7 +13,11 @@ function NewPost() {
           Create a new post with Bloggo
         </h1>
         {/* PAGE TO EDIT HERE */}
-        <section className="bg-white h-screen rounded-md w-2/3 border-2 border-black "></section>
+        <section className="bg-white h-screen rounded-md w-2/3 border-2 border-black ">
+          <form action="submit">
+            <textarea className="bg-indigo-300 w-full" />
+          </form>
+        </section>
       </main>
     </div>
   );
