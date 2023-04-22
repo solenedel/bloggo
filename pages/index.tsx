@@ -1,8 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <div className="w-screen">
       <Head>
@@ -20,8 +23,10 @@ const Home: NextPage = () => {
           <button className="md:mr-20 w-2/3 md:w-60 text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
             Log in
           </button>
-          <button className="text-2xl w-2/3 md:w-60 mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
-            Find out more
+          <button
+            onClick={() => router.push('/posts/NewPost')}
+            className="text-2xl w-2/3 md:w-60 mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+            Demo
           </button>
         </span>
       </main>
