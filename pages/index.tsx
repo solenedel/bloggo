@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import Navbar from '../components/Navbar';
 
 const Home: NextPage = () => {
   return (
@@ -14,14 +13,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="h-screen bg-homepage pt-36 pl-20">
-        <h1 className=" font-extrabold text-indigo-200 text-5xl font-pathwayExtreme">
+        <h1 className="font-bold text-indigo-200 text-6xl font-pathwayExtreme">
           Welcome to Bloggo.
         </h1>
-        <span className="flex w-full justify-start">
-          <button className="mr-20 text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+        <span className="flex flex-col md:flex-row w-full justify-start">
+          <button className="md:mr-20 w-2/3 md:w-60 text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
             Log in
           </button>
-          <button className="text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+          <button className="text-2xl w-2/3 md:w-60 mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
             Find out more
           </button>
         </span>
