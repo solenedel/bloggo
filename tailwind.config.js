@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sourceCodePro: ['Source Code Pro', 'monospace']
+        sourceCodePro: ['Source Code Pro', 'monospace'],
+        pathwayExtreme: ['Pathway Extreme', 'sans-serif']
       }
     },
   },

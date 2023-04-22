@@ -13,10 +13,18 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="text-indigo-300 h-screen bg-homepage">
-        <h1 className="font-semibold text-3xl font-sourceCodePro">
+      <main className="h-screen bg-homepage pt-36 pl-20">
+        <h1 className=" font-extrabold text-indigo-200 text-5xl font-pathwayExtreme">
           Welcome to Bloggo.
         </h1>
+        <span className="flex w-full justify-start">
+          <button className="mr-20 text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+            Log in
+          </button>
+          <button className="text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+            Find out more
+          </button>
+        </span>
       </main>
 
       {/* <footer className="bg-black">sss</footer> */}
