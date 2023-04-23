@@ -11,11 +11,22 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ColorPicker } from '@mantine/core';
 
+// export const getRGBColor = (hex: string) => {
+//   let color = hex.replace(/#/g, '');
+//   // rgb values
+//   var r = parseInt(color.substr(0, 2), 16);
+//   var g = parseInt(color.substr(2, 2), 16);
+//   var b = parseInt(color.substr(4, 2), 16);
+
+//   return `--color: ${r}, ${g}, ${b};`;
+// };
+
 function NewPost() {
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
 
   useEffect(() => {
-    console.log('BACKGROUND COLOR =====', bgColor, `bg-[${bgColor}]`);
+    console.log('BACKGROUND COLOR =====', typeof bgColor, `bg-[${bgColor}]`);
+    // getRGBColor();
   }, [bgColor]);
 
   return (
@@ -52,7 +63,7 @@ function NewPost() {
                 className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
               />
               <textarea
-                className={`bg-[${bgColor}] w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
+                className={`bg-${bgColor} w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
               />
             </form>
           </section>
