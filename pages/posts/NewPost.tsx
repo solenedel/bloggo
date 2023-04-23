@@ -13,20 +13,51 @@ function NewPost() {
           Create a new post with Bloggo
         </h1>
         {/* PAGE TO EDIT HERE */}
-        <section className="h-screen rounded-md w-2/3">
-          <form action="submit" className="flex flex-col">
-            <button className="text-xl w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
-              Save changes
-            </button>
-            <input
-              type="text"
-              placeholder="Title"
-              defaultValue={'My first post on Bloggo'}
-              className="my-10 h-10 bg-indigo-100 font-semibold text-xl"
-            />
-            <textarea className="bg-white w-full h-80 border-2 border-black" />
-          </form>
-        </section>
+        <span className="flex flex-col md:flex-row">
+          <section className="h-screen rounded-md w-2/3">
+            <form action="submit" className="flex flex-col">
+              <span className="w-full flex flex-col md:flex-row justify-between">
+                {' '}
+                {/* to do: transition colour */}
+                <button className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+                  Save changes
+                </button>
+                <button className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+                  Publish
+                </button>
+              </span>
+
+              <input
+                type="text"
+                placeholder="Title"
+                defaultValue={'My first post on Bloggo'}
+                className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
+              />
+              <textarea className="bg-white w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl" />
+            </form>
+          </section>
+          {/* DASHBOARD WITH COLOUR, FONTS, STYLES ETC */}
+          <section className="w-1/3 pl-10">
+            <h2 className="font-semibold font-pathwayExtreme text-xl">
+              Customise text
+            </h2>
+            <span className="flex w-full justify-around mt-10">
+              {' '}
+              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+                Bold
+              </button>
+              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+                Italic
+              </button>
+              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+                Underline
+              </button>
+              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+                Strikethrough
+              </button>
+            </span>
+          </section>
+        </span>
       </main>
     </div>
   );
