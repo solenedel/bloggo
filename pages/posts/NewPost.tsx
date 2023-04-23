@@ -13,9 +13,18 @@ function NewPost() {
           Create a new post with Bloggo
         </h1>
         {/* PAGE TO EDIT HERE */}
-        <section className="bg-white h-screen rounded-md w-2/3 border-2 border-black ">
-          <form action="submit">
-            <textarea className="bg-indigo-300 w-full" />
+        <section className="h-screen rounded-md w-2/3">
+          <form action="submit" className="flex flex-col">
+            <button className="text-xl w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+              Save changes
+            </button>
+            <input
+              type="text"
+              placeholder="Title"
+              defaultValue={'My first post on Bloggo'}
+              className="my-10 h-10 bg-indigo-100 font-semibold text-xl"
+            />
+            <textarea className="bg-white w-full h-80 border-2 border-black" />
           </form>
         </section>
       </main>
