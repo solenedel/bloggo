@@ -1,4 +1,14 @@
 import Head from 'next/head';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBold,
+  faItalic,
+  faUnderline,
+  faStrikethrough,
+  faPaintBrush,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { ColorPicker } from '@mantine/core';
 
 function NewPost() {
   return (
@@ -27,6 +37,7 @@ function NewPost() {
                 </button>
               </span>
 
+              {/* TO DO: max. character limit */}
               <input
                 type="text"
                 placeholder="Title"
@@ -44,16 +55,19 @@ function NewPost() {
             <span className="flex w-full justify-around mt-10">
               {' '}
               <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
-                Bold
+                <FontAwesomeIcon icon={faBold} />
               </button>
               <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
-                Italic
+                <FontAwesomeIcon icon={faItalic} />
               </button>
               <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
-                Underline
+                <FontAwesomeIcon icon={faUnderline} />
               </button>
               <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
-                Strikethrough
+                <FontAwesomeIcon icon={faStrikethrough} />
+              </button>
+              <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
+                <FontAwesomeIcon icon={faPaintBrush} />
               </button>
             </span>
           </section>
