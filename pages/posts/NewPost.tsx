@@ -43,16 +43,16 @@ function NewPost() {
             </h2>
             <span className="flex w-full justify-around mt-10">
               {' '}
-              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+              <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
                 Bold
               </button>
-              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+              <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
                 Italic
               </button>
-              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+              <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
                 Underline
               </button>
-              <button className="shadow-lg shadow-indigo-800 rounded-md p-2">
+              <button className="hover:shadow-md shadow-lg shadow-indigo-400 rounded-md p-2">
                 Strikethrough
               </button>
             </span>
