@@ -15,7 +15,7 @@ function NewPost() {
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
 
   useEffect(() => {
-    console.log('BACKGROUND COLOR =====', bgColor);
+    console.log('BACKGROUND COLOR =====', bgColor, `bg-[${bgColor}]`);
   }, [bgColor]);
 
   return (
@@ -52,7 +52,7 @@ function NewPost() {
                 className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
               />
               <textarea
-                className={`textBox w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
+                className={`bg-[${bgColor}] w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
               />
             </form>
           </section>
@@ -89,7 +89,7 @@ function NewPost() {
               <ColorPicker
                 format="hex"
                 value={bgColor}
-                onChange={() => console.log(bgColor)}
+                onChange={(e) => setBgColor(e)}
                 swatches={[
                   '#25262b',
                   '#868e96',
