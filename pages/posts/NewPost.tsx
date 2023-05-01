@@ -25,18 +25,24 @@ function NewPost() {
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
   const [selectedText, setSelectedText] = useState<string>('');
 
-  useEffect(() => {
-    console.log('BACKGROUND COLOR =====', typeof bgColor, `bg-[${bgColor}]`);
-    // getRGBColor();
-  }, [bgColor]);
+  // useEffect(() => {
+  //   console.log('BACKGROUND COLOR =====', typeof bgColor, `bg-[${bgColor}]`);
+  //   // getRGBColor();
+  // }, [bgColor]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       //@ts-ignore
-      console.log('======== ', window.getSelection().toString());
+      setSelectedText(() => window.getSelection().toString());
     }
+    // window.addEventListener('select', onselect);
   }, []);
   // useEffect with empty dependency array is the same as ComponentDidMount
+
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   console.log('===SELECTED TEXT ==== ', window.getSelection().toString());
+  // }, [selectedText]);
 
   return (
     <div>
@@ -67,6 +73,7 @@ function NewPost() {
               {/* TO DO: max. character limit */}
               <input
                 type="text"
+                onSelect={(e) => console.log('E -----', e)}
                 placeholder="Title"
                 defaultValue={'My first post on Bloggo'}
                 className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
