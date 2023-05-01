@@ -23,11 +23,20 @@ import { ColorPicker } from '@mantine/core';
 
 function NewPost() {
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
+  const [selectedText, setSelectedText] = useState<string>('');
 
   useEffect(() => {
     console.log('BACKGROUND COLOR =====', typeof bgColor, `bg-[${bgColor}]`);
     // getRGBColor();
   }, [bgColor]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      //@ts-ignore
+      console.log('======== ', window.getSelection().toString());
+    }
+  }, []);
+  // useEffect with empty dependency array is the same as ComponentDidMount
 
   return (
     <div>
