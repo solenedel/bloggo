@@ -13,6 +13,8 @@ import { ColorPicker } from '@mantine/core';
 function Test() {
   const [selectedText, setSelectedText] = useState<string>('');
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
+  const [textToSave, setTextToSave] = useState<string>('');
+  const [published, setPublished] = useState<boolean>(false);
 
   useEffect(() => {
     const onSelect = () => {
@@ -25,23 +27,48 @@ function Test() {
     window.addEventListener('select', onSelect);
   }, []);
 
+  const handleChange = (e: React.ChangeEvent<any>) => {
+    setTextToSave(e.target.value);
+  };
+
   // useEffect(() => {
   //   //@ts-ignore
   //   console.log('===SELECTED TEXT ==== ', selectedText);
   // }, [selectedText]);
 
+  useEffect(() => {
+    //@ts-ignore
+    console.log('=== TEXT TO SAVE ==== ', textToSave);
+  }, [textToSave]);
+
+  useEffect(() => {
+    //@ts-ignore
+    console.log('=== PUBLISHED ==== ', published);
+  }, [published]);
+
+  const onPublish = () => {
+    console.log('TESTING 12456');
+    setPublished(true);
+    // return <p>{textToSave}</p>;
+  };
+
   return (
     <div>
       <span className="flex flex-col md:flex-row">
         <section className="h-screen rounded-md w-2/3">
-          <form action="submit" className="flex flex-col">
+          <form
+            action="submit"
+            onSubmit={(e) => e.preventDefault()}
+            className="flex flex-col">
             <span className="w-full flex flex-col md:flex-row justify-start">
               {' '}
               {/* to do: transition colour */}
               <button className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
                 Save changes
               </button>
-              <button className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+              <button
+                onClick={onPublish}
+                className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
                 Publish
               </button>
             </span>
@@ -49,13 +76,21 @@ function Test() {
             {/* TO DO: max. character limit */}
             <input
               type="text"
+              // onChange={handleChange}
+
               placeholder="Title"
               defaultValue={'My first post on Bloggo'}
               className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
             />
-            <textarea
-              className={`bg-${bgColor} w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
-            />
+            {published === true ? (
+              <p>{textToSave}</p>
+            ) : (
+              <textarea
+                value={textToSave}
+                onChange={handleChange}
+                className={`bg-${bgColor} w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
+              />
+            )}
           </form>
         </section>
         {/* DASHBOARD WITH COLOUR, FONTS, STYLES ETC */}
