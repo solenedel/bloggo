@@ -15,17 +15,19 @@ function Test() {
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      //@ts-ignore
-      setSelectedText(() => window.getSelection().toString());
-    }
-    console.log('====== selected text ======', selectedText);
-    // window.addEventListener('select', onselect);
-  }, [window.getSelection]);
+    const onSelect = () => {
+      if (typeof window !== 'undefined') {
+        //@ts-ignore
+        setSelectedText(() => window.getSelection().toString());
+      }
+    };
+
+    window.addEventListener('select', onSelect);
+  }, []);
 
   // useEffect(() => {
   //   //@ts-ignore
-  //   console.log('===SELECTED TEXT ==== ', window.getSelection().toString());
+  //   console.log('===SELECTED TEXT ==== ', selectedText);
   // }, [selectedText]);
 
   return (
@@ -47,7 +49,6 @@ function Test() {
             {/* TO DO: max. character limit */}
             <input
               type="text"
-              onSelect={(e) => console.log('E -----', e)}
               placeholder="Title"
               defaultValue={'My first post on Bloggo'}
               className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"

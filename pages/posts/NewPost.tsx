@@ -1,46 +1,10 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { ColorPicker } from '@mantine/core';
+
 import dynamic from 'next/dynamic';
 
 const Test = dynamic(() => import('../../components/test'), { ssr: false });
 
-// export const getRGBColor = (hex: string) => {
-//   let color = hex.replace(/#/g, '');
-//   // rgb values
-//   var r = parseInt(color.substr(0, 2), 16);
-//   var g = parseInt(color.substr(2, 2), 16);
-//   var b = parseInt(color.substr(4, 2), 16);
-
-//   return `--color: ${r}, ${g}, ${b};`;
-// };
-
 function NewPost() {
-  const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
-  const [selectedText, setSelectedText] = useState<string>('');
-
-  // useEffect(() => {
-  //   console.log('BACKGROUND COLOR =====', typeof bgColor, `bg-[${bgColor}]`);
-  //   // getRGBColor();
-  // }, [bgColor]);
-
-  useEffect(() => {
-    const onSelect = () => {
-      if (typeof window !== 'undefined') {
-        //@ts-ignore
-        setSelectedText(() => window.getSelection().toString());
-      }
-    };
-
-    window.addEventListener('select', onSelect);
-  }, []);
-  // useEffect with empty dependency array is the same as ComponentDidMount
-
-  useEffect(() => {
-    //@ts-ignore
-    console.log('===SELECTED TEXT ==== ', selectedText);
-  }, [selectedText]);
-
   return (
     <div>
       <Head>
