@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { ColorPicker } from '@mantine/core';
-import Test from '../../components/test';
+import dynamic from 'next/dynamic';
+
+const Test = dynamic(() => import('../../components/test'), { ssr: false });
 
 // export const getRGBColor = (hex: string) => {
 //   let color = hex.replace(/#/g, '');

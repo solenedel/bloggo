@@ -14,6 +14,20 @@ function Test() {
   const [selectedText, setSelectedText] = useState<string>('');
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      //@ts-ignore
+      setSelectedText(() => window.getSelection().toString());
+    }
+    console.log('====== selected text ======', selectedText);
+    // window.addEventListener('select', onselect);
+  }, [window.getSelection]);
+
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   console.log('===SELECTED TEXT ==== ', window.getSelection().toString());
+  // }, [selectedText]);
+
   return (
     <div>
       <span className="flex flex-col md:flex-row">
