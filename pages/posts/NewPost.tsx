@@ -25,18 +25,21 @@ function NewPost() {
   // }, [bgColor]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      //@ts-ignore
-      setSelectedText(() => window.getSelection().toString());
-    }
-    // window.addEventListener('select', onselect);
+    const onSelect = () => {
+      if (typeof window !== 'undefined') {
+        //@ts-ignore
+        setSelectedText(() => window.getSelection().toString());
+      }
+    };
+
+    window.addEventListener('select', onSelect);
   }, []);
   // useEffect with empty dependency array is the same as ComponentDidMount
 
-  // useEffect(() => {
-  //   //@ts-ignore
-  //   console.log('===SELECTED TEXT ==== ', window.getSelection().toString());
-  // }, [selectedText]);
+  useEffect(() => {
+    //@ts-ignore
+    console.log('===SELECTED TEXT ==== ', selectedText);
+  }, [selectedText]);
 
   return (
     <div>
