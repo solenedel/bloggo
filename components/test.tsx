@@ -15,9 +15,11 @@ function Test() {
   const [selectedText, setSelectedText] = useState<string>('');
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
   const [textToSave, setTextToSave] = useState<string>('');
-  const [savedTitle, setSavedTitle] = useState<string>('');
+  const [titleToSave, setTitleToSave] = useState<string>('');
   const [published, setPublished] = useState<boolean>(false);
   const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
+  const [prevTitle, setPrevTitle] = useState<string>('');
+  const [prevText, setPrevText] = useState<string>('');
 
   useEffect(() => {
     const onSelect = () => {
@@ -32,6 +34,24 @@ function Test() {
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     setTextToSave(e.target.value);
+  };
+
+  const startEditing = () => {
+    setPrevTitle(titleToSave);
+    setPrevText(textToSave);
+    setEditingModeOn(true);
+  };
+
+  const onPublish = () => {
+    setTitleToSave(titleToSave);
+    setPublished(true);
+    setEditingModeOn(false);
+  };
+
+  const cancelEditing = () => {
+    setTitleToSave(prevTitle);
+    setTextToSave(prevText);
+    setEditingModeOn(false);
   };
 
   // useEffect(() => {
@@ -49,12 +69,6 @@ function Test() {
   //   console.log('=== PUBLISHED ==== ', published);
   // }, [published]);
 
-  const onPublish = () => {
-    setSavedTitle(savedTitle);
-    setPublished(true);
-    setEditingModeOn(false);
-  };
-
   return (
     <div>
       <span className="flex flex-col md:flex-row">
@@ -67,9 +81,11 @@ function Test() {
               {/* to do: transition colour */}
               {editingModeOn === true ? (
                 <>
-                  {/* <button className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
-                    Save changes
-                  </button> */}
+                  <button
+                    className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300"
+                    onClick={cancelEditing}>
+                    Cancel editing
+                  </button>
                   <button
                     onClick={onPublish}
                     className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
@@ -82,24 +98,23 @@ function Test() {
             </span>
 
             {/* TO DO: max. character limit */}
-            <span className="flex w-full items-baseline justify-between px-5">
+            <span className="flex w-full items-baseline justify-between pr-10">
               {editingModeOn === true ? (
                 <input
                   type="text"
-                  onChange={(e) => setSavedTitle(e.target.value)}
-                  placeholder="Title"
-                  defaultValue={'My first post on Bloggo'}
-                  className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
+                  onChange={(e) => setTitleToSave(e.target.value)}
+                  placeholder="Title of your blog post"
+                  className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0 border-2 border-indigo-400 rounded-md p-1"
                 />
               ) : (
-                <h2>{savedTitle}</h2>
+                <h2 className="font-semibold text-xl my-12">{titleToSave}</h2>
               )}
 
               {/* EDIT BUTTON */}
               {editingModeOn === false ? (
                 <button
                   className="ml-10 text-xl hover:underline"
-                  onClick={() => setEditingModeOn(true)}>
+                  onClick={startEditing}>
                   <FontAwesomeIcon icon={faPencil} className="mr-2" />
                   Edit
                 </button>
