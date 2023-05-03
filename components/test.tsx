@@ -7,6 +7,7 @@ import {
   faStrikethrough,
   faPaintBrush,
   faFillDrip,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { ColorPicker } from '@mantine/core';
 
@@ -15,6 +16,7 @@ function Test() {
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
   const [textToSave, setTextToSave] = useState<string>('');
   const [published, setPublished] = useState<boolean>(false);
+  const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
 
   useEffect(() => {
     const onSelect = () => {
@@ -36,20 +38,19 @@ function Test() {
   //   console.log('===SELECTED TEXT ==== ', selectedText);
   // }, [selectedText]);
 
-  useEffect(() => {
-    //@ts-ignore
-    console.log('=== TEXT TO SAVE ==== ', textToSave);
-  }, [textToSave]);
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   console.log('=== TEXT TO SAVE ==== ', textToSave);
+  // }, [textToSave]);
 
-  useEffect(() => {
-    //@ts-ignore
-    console.log('=== PUBLISHED ==== ', published);
-  }, [published]);
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   console.log('=== PUBLISHED ==== ', published);
+  // }, [published]);
 
   const onPublish = () => {
-    console.log('TESTING 12456');
     setPublished(true);
-    // return <p>{textToSave}</p>;
+    setEditingModeOn(false);
   };
 
   return (
@@ -61,27 +62,46 @@ function Test() {
             onSubmit={(e) => e.preventDefault()}
             className="flex flex-col">
             <span className="w-full flex flex-col md:flex-row justify-start">
-              {' '}
               {/* to do: transition colour */}
-              <button className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
-                Save changes
-              </button>
-              <button
-                onClick={onPublish}
-                className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
-                Publish
-              </button>
+              {editingModeOn === true ? (
+                <>
+                  <button className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+                    Save changes
+                  </button>
+                  <button
+                    onClick={onPublish}
+                    className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+                    Publish
+                  </button>
+                </>
+              ) : (
+                ''
+              )}
             </span>
 
             {/* TO DO: max. character limit */}
-            <input
-              type="text"
-              // onChange={handleChange}
+            <span className="flex w-full items-baseline justify-between px-5">
+              <input
+                type="text"
+                // onChange={handleChange}
 
-              placeholder="Title"
-              defaultValue={'My first post on Bloggo'}
-              className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
-            />
+                placeholder="Title"
+                defaultValue={'My first post on Bloggo'}
+                className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0"
+              />
+              {/* EDIT BUTTON */}
+              {editingModeOn === false ? (
+                <button
+                  className="ml-10 text-xl hover:underline"
+                  onClick={() => setEditingModeOn(true)}>
+                  <FontAwesomeIcon icon={faPencil} className="mr-2" />
+                  Edit
+                </button>
+              ) : (
+                ''
+              )}
+            </span>
+
             {published === true ? (
               <p>{textToSave}</p>
             ) : (
