@@ -32,6 +32,10 @@ function Test() {
     window.addEventListener('select', onSelect);
   }, []);
 
+  useEffect(() => {
+    console.log('TITLE TO SAVE -----', titleToSave);
+  }, [titleToSave]);
+
   const handleChange = (e: React.ChangeEvent<any>) => {
     setTextToSave(e.target.value);
   };
@@ -54,20 +58,10 @@ function Test() {
     setEditingModeOn(false);
   };
 
-  // useEffect(() => {
-  //   //@ts-ignore
-  //   console.log('===SELECTED TEXT ==== ', selectedText);
-  // }, [selectedText]);
-
-  // useEffect(() => {
-  //   //@ts-ignore
-  //   console.log('=== TEXT TO SAVE ==== ', textToSave);
-  // }, [textToSave]);
-
-  // useEffect(() => {
-  //   //@ts-ignore
-  //   console.log('=== PUBLISHED ==== ', published);
-  // }, [published]);
+  const saveChanges = () => {
+    // this does not close editing mode but should save the state
+    // and save it to local storage
+  };
 
   return (
     <div>
@@ -87,9 +81,14 @@ function Test() {
                     Cancel editing
                   </button>
                   <button
+                    className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300"
+                    onClick={cancelEditing}>
+                    Save changes
+                  </button>
+                  <button
                     onClick={onPublish}
                     className="text-xl md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
-                    Publish / save changes
+                    Publish
                   </button>
                 </>
               ) : (
@@ -103,7 +102,8 @@ function Test() {
                 <input
                   type="text"
                   onChange={(e) => setTitleToSave(e.target.value)}
-                  placeholder="Title of your blog post"
+                  placeholder={'Title of your blog post'}
+                  defaultValue={titleToSave ? titleToSave : ''}
                   className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0 border-2 border-indigo-400 rounded-md p-1"
                 />
               ) : (
