@@ -1,13 +1,17 @@
-import { useState } from 'react';
-
-export const useBlogEditing = () => {
-  const [textToSave, setTextToSave] = useState<string>('');
-  const [titleToSave, setTitleToSave] = useState<string>('');
-  const [published, setPublished] = useState<boolean>(false);
-  const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
-  const [prevTitle, setPrevTitle] = useState<string>('');
-  const [prevText, setPrevText] = useState<string>('');
-
+export const useBlogEditing = (
+  published: boolean,
+  setPublished: (published: boolean) => void,
+  textToSave: string,
+  setTextToSave: (textToSave: string) => void,
+  titleToSave: string,
+  setTitleToSave: (titleToSave: string) => void,
+  editingModeOn: boolean,
+  setEditingModeOn: (editingModeOn: boolean) => void,
+  prevTitle: string,
+  setPrevTitle: (prevTitle: string) => void,
+  prevText: string,
+  setPrevText: (prevText: string) => void
+) => {
   const startEditing = () => {
     setPrevTitle(titleToSave);
     setPrevText(textToSave);

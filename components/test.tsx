@@ -15,25 +15,26 @@ import { useBlogEditing } from '../hooks/useBlogEditing';
 function Test() {
   const [selectedText, setSelectedText] = useState<string>('');
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
-  // const [textToSave, setTextToSave] = useState<string>('');
-  // const [titleToSave, setTitleToSave] = useState<string>('');
-  // const [published, setPublished] = useState<boolean>(false);
-  // const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
-  // const [prevTitle, setPrevTitle] = useState<string>('');
-  // const [prevText, setPrevText] = useState<string>('');
-  const {
-    startEditing,
-    onPublish,
+  const [textToSave, setTextToSave] = useState<string>('');
+  const [titleToSave, setTitleToSave] = useState<string>('');
+  const [published, setPublished] = useState<boolean>(false);
+  const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
+  const [prevTitle, setPrevTitle] = useState<string>('');
+  const [prevText, setPrevText] = useState<string>('');
+  const { startEditing, cancelEditing, onPublish } = useBlogEditing(
     published,
-    cancelEditing,
+    setPublished,
     textToSave,
     setTextToSave,
     titleToSave,
     setTitleToSave,
     editingModeOn,
+    setEditingModeOn,
     prevTitle,
     prevText,
-  } = useBlogEditing;
+    setPrevText,
+    setPrevTitle
+  );
 
   useEffect(() => {
     const onSelect = () => {
