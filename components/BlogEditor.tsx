@@ -36,6 +36,7 @@ function BlogEditor() {
     setPrevTitle
   );
 
+  // user makes a text selection
   useEffect(() => {
     const onSelect = () => {
       if (typeof window !== 'undefined') {
@@ -46,6 +47,18 @@ function BlogEditor() {
 
     window.addEventListener('select', onSelect);
   }, []);
+
+  useEffect(() => {
+    const currentText: any = localStorage.getItem('CURRENT-TEXT');
+    setTextToSave(JSON.parse(currentText));
+    const currentTitle: any = localStorage.getItem('CURRENT-TITLE');
+    setTextToSave(JSON.parse(currentTitle));
+  }, []);
+
+  const saveChanges = (e: React.ChangeEvent<any>) => {
+    localStorage.setItem('CURRENT-TEXT', JSON.stringify(textToSave));
+    localStorage.setItem('CURRENT-TITLE', JSON.stringify(titleToSave));
+  };
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     setTextToSave(e.target.value);
@@ -70,7 +83,7 @@ function BlogEditor() {
                   </button>
                   <button
                     className="text-xl mr-28 md:w-1/4 my-10 bg-indigo-200 p-2 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300"
-                    onClick={cancelEditing}>
+                    onClick={saveChanges}>
                     Save changes
                   </button>
                   <button
