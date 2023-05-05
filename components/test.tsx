@@ -31,8 +31,8 @@ function Test() {
     editingModeOn,
     setEditingModeOn,
     prevTitle,
-    prevText,
     setPrevText,
+    prevText,
     setPrevTitle
   );
 
