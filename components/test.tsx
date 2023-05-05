@@ -97,6 +97,7 @@ function Test() {
             </span>
 
             {/* TO DO: max. character limit */}
+
             <span className="flex w-full items-baseline justify-between pr-10">
               {editingModeOn === true ? (
                 <input
@@ -107,7 +108,9 @@ function Test() {
                   className="my-10 h-10 bg-indigo-100 font-semibold text-xl outline-0 border-2 border-indigo-400 rounded-md p-1"
                 />
               ) : (
-                <h2 className="font-semibold text-xl my-12">{titleToSave}</h2>
+                <h2 className="font-semibold text-xl my-12">
+                  {titleToSave ? titleToSave : 'My Blog title'}
+                </h2>
               )}
 
               {/* EDIT BUTTON */}
