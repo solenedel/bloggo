@@ -48,17 +48,28 @@ function BlogEditor() {
     window.addEventListener('select', onSelect);
   }, []);
 
+  // const alertUser = () => {
+  //   console.log('USER NAVIGATED AWAY');
+  // };
+
+  const saveChanges = () => {
+    localStorage.setItem('CURRENT-TEXT', JSON.stringify(textToSave));
+    localStorage.setItem('CURRENT-TITLE', JSON.stringify(titleToSave));
+  };
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', saveChanges);
+    return () => {
+      window.removeEventListener('beforeunload', saveChanges);
+    };
+  }, []);
+
   useEffect(() => {
     const currentText: any = localStorage.getItem('CURRENT-TEXT');
     setTextToSave(JSON.parse(currentText));
     const currentTitle: any = localStorage.getItem('CURRENT-TITLE');
     setTextToSave(JSON.parse(currentTitle));
   }, []);
-
-  const saveChanges = (e: React.ChangeEvent<any>) => {
-    localStorage.setItem('CURRENT-TEXT', JSON.stringify(textToSave));
-    localStorage.setItem('CURRENT-TITLE', JSON.stringify(titleToSave));
-  };
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     setTextToSave(e.target.value);
