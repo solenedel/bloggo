@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic'; // TO DO: is this actually necessary
 
-import dynamic from 'next/dynamic';
-
-const Test = dynamic(() => import('../../components/test'), { ssr: false });
+const BlogEditor = dynamic(() => import('../../components/BlogEditor'), {
+  ssr: false,
+});
 
 function NewPost() {
   return (
@@ -16,8 +17,8 @@ function NewPost() {
         <h1 className="font-pathwayExtreme font-semibold text-2xl py-10">
           Create a new post with Bloggo
         </h1>
-        {/* PAGE TO EDIT HERE */}
-        <Test />
+        {/* BLOG EDITOR - INTERACTIVE SECTION */}
+        <BlogEditor />
       </main>
     </div>
   );

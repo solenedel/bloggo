@@ -12,6 +12,9 @@ export const useBlogEditing = (
   prevText: string,
   setPrevText: (prevText: string) => void
 ) => {
+  // TO DOs --------------------------------------------------------------------
+  // function: saveProgress without closing editing mode (save to local storage)
+
   const startEditing = () => {
     setPrevTitle(titleToSave);
     setPrevText(textToSave);
