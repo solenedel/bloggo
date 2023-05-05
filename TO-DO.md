@@ -1,0 +1,4 @@
+- set up redux
+- change bg colour
+- change text colour
+- keep text on reload, save to local storage

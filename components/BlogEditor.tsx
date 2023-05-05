@@ -39,8 +39,8 @@ function BlogEditor() {
   useEffect(() => {
     const onSelect = () => {
       if (typeof window !== 'undefined') {
-        //@ts-ignore
-        setSelectedText(() => window.getSelection().toString());
+        // used non-null assertion operator - is it okay?
+        setSelectedText(() => window.getSelection()!.toString());
       }
     };
 
