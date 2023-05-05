@@ -10,16 +10,30 @@ import {
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { ColorPicker } from '@mantine/core';
+import { useBlogEditing } from '../hooks/useBlogEditing';
 
 function Test() {
   const [selectedText, setSelectedText] = useState<string>('');
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
-  const [textToSave, setTextToSave] = useState<string>('');
-  const [titleToSave, setTitleToSave] = useState<string>('');
-  const [published, setPublished] = useState<boolean>(false);
-  const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
-  const [prevTitle, setPrevTitle] = useState<string>('');
-  const [prevText, setPrevText] = useState<string>('');
+  // const [textToSave, setTextToSave] = useState<string>('');
+  // const [titleToSave, setTitleToSave] = useState<string>('');
+  // const [published, setPublished] = useState<boolean>(false);
+  // const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
+  // const [prevTitle, setPrevTitle] = useState<string>('');
+  // const [prevText, setPrevText] = useState<string>('');
+  const {
+    startEditing,
+    onPublish,
+    published,
+    cancelEditing,
+    textToSave,
+    setTextToSave,
+    titleToSave,
+    setTitleToSave,
+    editingModeOn,
+    prevTitle,
+    prevText,
+  } = useBlogEditing;
 
   useEffect(() => {
     const onSelect = () => {
@@ -32,31 +46,31 @@ function Test() {
     window.addEventListener('select', onSelect);
   }, []);
 
-  useEffect(() => {
-    console.log('TITLE TO SAVE -----', titleToSave);
-  }, [titleToSave]);
+  // useEffect(() => {
+  //   console.log('TITLE TO SAVE -----', titleToSave);
+  // }, [titleToSave]);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     setTextToSave(e.target.value);
   };
 
-  const startEditing = () => {
-    setPrevTitle(titleToSave);
-    setPrevText(textToSave);
-    setEditingModeOn(true);
-  };
+  // const startEditing = () => {
+  //   setPrevTitle(titleToSave);
+  //   setPrevText(textToSave);
+  //   setEditingModeOn(true);
+  // };
 
-  const onPublish = () => {
-    setTitleToSave(titleToSave);
-    setPublished(true);
-    setEditingModeOn(false);
-  };
+  // const onPublish = () => {
+  //   setTitleToSave(titleToSave);
+  //   setPublished(true);
+  //   setEditingModeOn(false);
+  // };
 
-  const cancelEditing = () => {
-    setTitleToSave(prevTitle);
-    setTextToSave(prevText);
-    setEditingModeOn(false);
-  };
+  // const cancelEditing = () => {
+  //   setTitleToSave(prevTitle);
+  //   setTextToSave(prevText);
+  //   setEditingModeOn(false);
+  // };
 
   const saveChanges = () => {
     // this does not close editing mode but should save the state
