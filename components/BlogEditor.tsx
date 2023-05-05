@@ -13,10 +13,17 @@ import { ColorPicker } from '@mantine/core';
 import { useBlogEditing } from '../hooks/useBlogEditing';
 
 function BlogEditor() {
+  const localStorageText: any = localStorage.getItem('CURRENT-TEXT');
+  const localStorageTitle: any = localStorage.getItem('CURRENT-TITLE');
+
   const [selectedText, setSelectedText] = useState<string>('');
   const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
-  const [textToSave, setTextToSave] = useState<string>('');
-  const [titleToSave, setTitleToSave] = useState<string>('');
+  const [textToSave, setTextToSave] = useState<string>(
+    JSON.parse(localStorageText) || ''
+  );
+  const [titleToSave, setTitleToSave] = useState<string>(
+    JSON.parse(localStorageTitle) || ''
+  );
   const [published, setPublished] = useState<boolean>(false);
   const [editingModeOn, setEditingModeOn] = useState<boolean>(false);
   const [prevTitle, setPrevTitle] = useState<string>('');
@@ -65,10 +72,10 @@ function BlogEditor() {
   }, []);
 
   useEffect(() => {
-    const currentText: any = localStorage.getItem('CURRENT-TEXT');
-    setTextToSave(JSON.parse(currentText));
-    const currentTitle: any = localStorage.getItem('CURRENT-TITLE');
-    setTextToSave(JSON.parse(currentTitle));
+    // const currentText: any = localStorage.getItem('CURRENT-TEXT');
+    setTextToSave(JSON.parse(localStorageText));
+    // const currentTitle: any = localStorage.getItem('CURRENT-TITLE');
+    setTextToSave(JSON.parse(localStorageTitle));
   }, []);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
@@ -108,8 +115,6 @@ function BlogEditor() {
               )}
             </span>
 
-            {/* TO DO: max. character limit */}
-
             <span className="flex w-full items-baseline justify-between pr-10">
               {editingModeOn === true ? (
                 <input
@@ -138,8 +143,10 @@ function BlogEditor() {
               )}
             </span>
 
-            {published === true && editingModeOn === false ? (
-              <p>{textToSave}</p>
+            {editingModeOn === false ? (
+              <p>
+                {textToSave || 'Click on the edit button to start writing.'}
+              </p>
             ) : (
               <textarea
                 value={textToSave}
