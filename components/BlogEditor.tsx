@@ -12,6 +12,17 @@ import {
 import { ColorPicker } from '@mantine/core';
 import { useBlogEditing } from '../hooks/useBlogEditing';
 
+// code from: https://dev.to/eons/detect-page-refresh-tab-close-and-route-change-with-react-router-v5-3pd
+window.onbeforeunload = (event) => {
+  const e = event || window.event;
+  // Cancel the event
+  e.preventDefault();
+  if (e) {
+    e.returnValue = ''; // Legacy method for cross browser support
+  }
+  return ''; // Legacy method for cross browser support
+};
+
 function BlogEditor() {
   const localStorageText: any = localStorage.getItem('CURRENT-TEXT');
   const localStorageTitle: any = localStorage.getItem('CURRENT-TITLE');
@@ -55,28 +66,15 @@ function BlogEditor() {
     window.addEventListener('select', onSelect);
   }, []);
 
-  // const alertUser = () => {
-  //   console.log('USER NAVIGATED AWAY');
-  // };
-
   const saveChanges = () => {
     localStorage.setItem('CURRENT-TEXT', JSON.stringify(textToSave));
     localStorage.setItem('CURRENT-TITLE', JSON.stringify(titleToSave));
   };
 
-  // useEffect(() => {
-  //   window.addEventListener('beforeunload', saveChanges);
-  //   return () => {
-  //     window.removeEventListener('beforeunload', saveChanges);
-  //   };
-  // }, []);
-
   useEffect(() => {
-    // const currentText: any = localStorage.getItem('CURRENT-TEXT');
     setTextToSave(JSON.parse(localStorageText));
-    // const currentTitle: any = localStorage.getItem('CURRENT-TITLE');
     setTextToSave(JSON.parse(localStorageTitle));
-  }, []);
+  }, [localStorageText, localStorageTitle]);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     setTextToSave(e.target.value);
