@@ -64,12 +64,12 @@ function BlogEditor() {
     localStorage.setItem('CURRENT-TITLE', JSON.stringify(titleToSave));
   };
 
-  useEffect(() => {
-    window.addEventListener('beforeunload', saveChanges);
-    return () => {
-      window.removeEventListener('beforeunload', saveChanges);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('beforeunload', saveChanges);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', saveChanges);
+  //   };
+  // }, []);
 
   useEffect(() => {
     // const currentText: any = localStorage.getItem('CURRENT-TEXT');
