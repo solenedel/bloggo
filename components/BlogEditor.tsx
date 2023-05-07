@@ -29,7 +29,7 @@ function BlogEditor() {
   const localStorageTitle: any = localStorage.getItem('CURRENT-TITLE');
 
   const [selectedText, setSelectedText] = useState<string>('');
-  const [bgColor, setBgColor] = useState<string>('rgba(255, 255, 255, 0.7)');
+  const [bgColor, setBgColor] = useState<string>('');
   const [textToSave, setTextToSave] = useState<string>(
     JSON.parse(localStorageText) || ''
   );
@@ -150,11 +150,32 @@ function BlogEditor() {
               <textarea
                 value={textToSave}
                 onChange={handleChange}
-                className={`bg-${bgColor} w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
+                className={`bg-[${bgColor.toString()}] w-full h-80 border-2 border-indigo-500 rounded-md outline-0 text-xl`}
               />
             )}
           </form>
         </section>
+        <ColorPicker
+          format="hex"
+          value={bgColor}
+          onChange={(e) => setBgColor(e)}
+          swatches={[
+            '#25262b',
+            '#868e96',
+            '#fa5252',
+            '#e64980',
+            '#be4bdb',
+            '#7950f2',
+            '#4c6ef5',
+            '#228be6',
+            '#15aabf',
+            '#12b886',
+            '#40c057',
+            '#82c91e',
+            '#fab005',
+            '#fd7e14',
+          ]}
+        />
         {/* DASHBOARD WITH COLOUR, FONTS, STYLES ETC */}
         {editingModeOn === true ? <EditingDashboard /> : ''}
       </span>
