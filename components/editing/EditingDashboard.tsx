@@ -10,9 +10,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ColorPicker } from '@mantine/core';
 
-function EditingDashboard() {
-  // { bgColor }: { bgColor: string },
-  // { setBgColor }: { setBgColor: () => void }
+function EditingDashboard(
+  { bgColor }: { bgColor: string },
+  { setBgColor }: { setBgColor: (e: React.ChangeEvent<any>) => void }
+) {
   return (
     <section className="w-1/3 pl-14">
       <h2 className="font-semibold font-pathwayExtreme text-xl">
@@ -45,8 +46,9 @@ function EditingDashboard() {
       {
         <ColorPicker
           format="hex"
-          // value={bgColor}
-          // onChange={(e) => setBgColor(e)}
+          value={bgColor}
+          // @ts-ignore
+          onChange={(e) => setBgColor(e)}
           swatches={[
             '#25262b',
             '#868e96',
