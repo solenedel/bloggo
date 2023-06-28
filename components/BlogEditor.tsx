@@ -28,7 +28,7 @@ function BlogEditor() {
   const localStorageText: any = localStorage.getItem('CURRENT-TEXT');
   const localStorageTitle: any = localStorage.getItem('CURRENT-TITLE');
   const [selectedText, setSelectedText] = useState<string>('');
-  const [bgColor, setBgColor] = useState<string>('#7950f2');
+  const [bgColor, setBgColor] = useState<string>('#fff');
   const [textToSave, setTextToSave] = useState<string>(
     JSON.parse(localStorageText) || ''
   );
@@ -157,11 +157,7 @@ function BlogEditor() {
         </section>
 
         {/* DASHBOARD WITH COLOUR, FONTS, STYLES ETC */}
-        {editingModeOn === true ? (
-          <EditingDashboard bgColor={bgColor} setBgColor={setBgColor} />
-        ) : (
-          ''
-        )}
+        {editingModeOn === true ? <EditingDashboard bgColor={bgColor} /> : ''}
       </span>
     </div>
   );

@@ -12,7 +12,7 @@ import { ColorPicker } from '@mantine/core';
 
 function EditingDashboard(
   { bgColor }: { bgColor: string },
-  { setBgColor }: { setBgColor: (e: React.ChangeEvent<any>) => void }
+  { setBgColor }: { setBgColor: () => void }
 ) {
   return (
     <section className="w-1/3 pl-14">
