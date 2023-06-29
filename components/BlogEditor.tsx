@@ -66,6 +66,12 @@ function BlogEditor() {
     window.addEventListener('select', onSelect);
   }, []);
 
+  const boldText = (text: string) => {};
+
+  useEffect(() => {
+    console.log('------ SELECTED TEXT ------', selectedText);
+  }, [selectedText]);
+
   const saveChanges = () => {
     localStorage.setItem('CURRENT-TEXT', JSON.stringify(textToSave));
     localStorage.setItem('CURRENT-TITLE', JSON.stringify(titleToSave));

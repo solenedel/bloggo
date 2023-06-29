@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
      "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,7 +10,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sourceCodePro: ['Source Code Pro', 'monospace'],
-        pathwayExtreme: ['Pathway Extreme', 'sans-serif']
+        pathwayExtreme: ['Pathway Extreme', 'sans-serif'],
+        mainFont: ['Dosis Variable', 'sans-serif']
       }
     },
   },

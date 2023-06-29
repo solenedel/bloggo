@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState, useEffect } from 'react';
 import {
   faBold,
   faItalic,
@@ -14,6 +15,20 @@ function EditingDashboard(
   { bgColor }: { bgColor: string },
   { setBgColor }: { setBgColor: () => void }
 ) {
+  const [selectedText, setSelectedText] = useState<string>('');
+
+  // user makes a text selection
+  useEffect(() => {
+    const onSelect = () => {
+      if (typeof window !== 'undefined') {
+        // used non-null assertion operator - is it okay?
+        setSelectedText(() => window.getSelection()!.toString());
+      }
+    };
+
+    window.addEventListener('select', onSelect);
+  }, []);
+
   return (
     <section className="w-1/3 pl-14">
       <h2 className="font-semibold font-pathwayExtreme text-xl">

@@ -16,16 +16,16 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="h-screen bg-homepage pt-36 pl-20">
-        <h1 className="font-bold text-indigo-200 text-6xl font-pathwayExtreme">
+        <h1 className="font-extrabold text-green-400 tracking-wider text-7xl font-mainFont">
           Welcome to Bloggo.
         </h1>
         <span className="flex flex-col md:flex-row w-full justify-start">
-          <button className="md:mr-20 w-2/3 md:w-60 text-2xl mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+          <button className="md:mr-20 w-2/3 md:w-60 text-2xl mt-28  hover:bg-yellow-100 p-3 font-mainFont font-semibold tracking-wide rounded-md bg-transparent text-yellow-100 hover:text-indigo-900 border-2 border-yellow-100">
             Log in
           </button>
           <button
             onClick={() => router.push('/posts/NewPost')}
-            className="text-2xl w-2/3 md:w-60 mt-28  bg-indigo-200 p-3 font-pathwayExtreme font-semibold rounded-md hover:bg-indigo-300">
+            className="text-2xl w-2/3 md:w-60 mt-28  text-2xl mt-28  hover:bg-yellow-100 p-3 font-mainFont font-semibold tracking-wide rounded-md bg-transparent text-yellow-100 hover:text-indigo-900 border-2 border-yellow-100">
             Demo
           </button>
         </span>
