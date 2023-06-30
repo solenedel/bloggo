@@ -1,6 +1,6 @@
 function Navbar() {
   return (
-    <nav className="h-14 bg-black text-indigo-200">
+    <nav className="h-14 bg-green-400 text-indigo-200">
       {/* <p>My profile</p> */}
     </nav>
   );
